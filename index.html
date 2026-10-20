@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BracketForge AI - Tournament Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Oswald:wght@500;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="cyber">
+    <header class="app-header">
+        <div class="logo-container">
+            <span class="logo-accent">BRACKET</span>FORGE <span class="ai-badge">AI</span>
+        </div>
+        <div class="header-controls">
+            <button id="toggleChatBtn" class="header-btn hidden" onclick="toggleChatSidebar()">OPEN BOT CHAT</button>
+            <button id="resetBtn" class="header-btn btn-danger hidden" onclick="resetTournament()">RESET TOURNAMENT</button>
+            <div class="header-status">SYSTEM ONLINE</div>
+        </div>
+    </header>
+
+    <main class="app-container" id="appContainer">
+        <!-- LEFT: THE AGENT CHAT INTERFACE -->
+        <section class="chat-section" id="chatSidebar">
+            <div class="card-header">
+                <h2>AGENT INTERFACE</h2>
+                <span class="live-indicator">ACTIVE</span>
+            </div>
+            <div class="chat-history" id="chatHistory"></div>
+            <div class="chat-done-bar hidden" id="chatDoneBar">
+                <button class="done-fullscreen-btn" onclick="minimizeBotToFullscreen()">DONE - CLOSE MENU & VIEW FULLSCREEN</button>
+                <span class="done-hint">Or type "done", or keep chatting to change prize, color, style, venue, or players.</span>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="Type your answer here..." autocomplete="off" autofocus>
+                <button id="sendBtn" type="button">SEND</button>
+            </div>
+        </section>
+
+        <!-- RIGHT: THE LIVE GENERATED TOURNAMENT -->
+        <section class="visualizer-section" id="visualizerSection">
+            <div class="card-header">
+                <h2>TOURNAMENT DASHBOARD</h2>
+                <div class="live-customizer hidden" id="liveCustomizer">
+                    <div class="color-swatch-bar" title="Switch Color">
+                        <span class="swatch-dot" style="background:#00f0ff;" onclick="changeTheme('cyber')"></span>
+                        <span class="swatch-dot" style="background:#d4af37;" onclick="changeTheme('gold')"></span>
+                        <span class="swatch-dot" style="background:#00ff88;" onclick="changeTheme('emerald')"></span>
+                        <span class="swatch-dot" style="background:#ff4d6d;" onclick="changeTheme('crimson')"></span>
+                        <span class="swatch-dot" style="background:#a855f7;" onclick="changeTheme('royal')"></span>
+                        <span class="swatch-dot" style="background:#ffffff;" onclick="changeTheme('slate')"></span>
+                    </div>
+                    <select id="liveLayoutSelect" onchange="changeLayout(this.value)" title="Board Style">
+                        <option value="box">Style: Normal Box</option>
+                        <option value="brackets">Style: Brackets (Top 8)</option>
+                        <option value="list">Style: Compact List</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="dashboard-placeholder" id="placeholderView">
+                <div class="placeholder-box">BRACKETFORGE ENGINE</div>
+                <h3>Awaiting Tournament Configuration</h3>
+                <p>Answer the questions in the chat panel on the left to build your tournament.</p>
+            </div>
+            
+            <div class="dashboard-active hidden" id="dashboardView">
+                <!-- BROADCAST BANNER -->
+                <div class="broadcast-banner">
+                    <div class="banner-left">
+                        <h1 id="tourneyTitle">TOURNAMENT TITLE</h1>
+                        <div class="prize-ticker" id="prizeTicker">
+                            <span class="ticker-item">VENUE: <strong id="venueDisplay">MAIN HALL</strong></span>
+                            <span class="ticker-item">TOTAL POOL: <strong id="totalPrizeDisplay">0</strong></span>
+                            <span class="ticker-item">1ST (50%): <strong id="prize1Display">0</strong></span>
+                            <span class="ticker-item">2ND (37.5%): <strong id="prize2Display">0</strong></span>
+                            <span class="ticker-item">3RD (12.5%): <strong id="prize3Display">0</strong></span>
+                        </div>
+                    </div>
+                    <div class="banner-right">
+                        <div id="tourneyMeta" class="meta-badge">FORMAT // 0 PLAYERS</div>
+                    </div>
+                </div>
+
+                <!-- NAVIGATION & ROUND FILTER -->
+                <div class="dashboard-SubBar">
+                    <div class="dashboard-tabs">
+                        <button class="tab-btn active" id="tabBtnBracket" onclick="switchTab('bracket')">MATCHES & ROUNDS</button>
+                        <button class="tab-btn" id="tabBtnStandings" onclick="switchTab('standings')">SCOREBOARD</button>
+                    </div>
+                    <div class="round-filter" id="roundFilterBar"></div>
+                </div>
+
+                <!-- TAB 1: MATCHES & BRACKET VIEW -->
+                <div class="tab-content" id="bracketTab">
+                    <div id="stageNoticeContainer"></div>
+                    <div id="byeBannerContainer"></div>
+                    <div class="matches-arena" id="matchesContainer"></div>
+                </div>
+
+                <!-- TAB 2: SIMPLIFIED STANDINGS -->
+                <div class="tab-content hidden" id="standingsTab">
+                    <div class="simple-scoreboard" id="standingsBody"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
