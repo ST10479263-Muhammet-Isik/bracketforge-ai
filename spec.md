@@ -8,33 +8,19 @@ BracketForge AI is built as a client-side Single-Page Application (SPA) designed
 2. Deterministic Tournament Engine: Pure mathematical and algorithmic routines responsible for bracket tree construction, schedule generation (Circle Method), fair bye tracking, and prize pool calculations.
 3. Reactive Presentation Layer: DOM rendering modules supporting dynamic layout transformations (FIFA Bracket Tree, Normal Box Cards, Compact Match List), live theme styling, and instant state re-sorting without page reloads.
 
-+-----------------------------+
-|  User Input (Text / Chips)  |
-+-----------------------------+
-               |
-               v
-+-----------------------------+
-|    State Machine Parser     |
-| (Name, Format, Prize, Roster)
-+-----------------------------+
-               |
-               v
-+-----------------------------+
-|   Tournament Engine State   |
-|  1. Prize Calculator        |
-|  2. Circle Method Generator |
-|  3. Knockout Tree Ladder    |
-|  4. Dynamic Bye Tracker     |
-+-----------------------------+
-               |
-               v
-+-----------------------------+
-|    Reactive Viewport DOM    |
-|  - Financial Broadcast Bar  |
-|  - Round Filtering Controls |
-|  - Match Board (3 Views)    |
-|  - Real-Time Scoreboard     |
-+-----------------------------+
+### Data Flow Execution Order
+
+1. User Input Ingestion: Receives text strings or interactive button clicks from the chat interface.
+2. State Machine Parsing: Extracts and validates tournament parameters (Name, Format, Prize Pool, Theme, Layout, and Rosters).
+3. State Calculation:
+   - Proportional prize pool distribution
+   - Pairing schedule creation (Circle Method or Single Elimination ladder)
+   - Dynamic rotating bye tracking
+4. Viewport DOM Rendering:
+   - Updates broadcast header and financial payout displays
+   - Renders round navigation controls
+   - Injects match cards based on selected layout (Brackets, Normal Box, or List)
+   - Synchronizes live scoreboard standings
 
 ## 2. Technology Stack & Execution Environment
 
