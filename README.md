@@ -3,8 +3,8 @@
 > An agentic tournament engine that transforms natural conversational setup into live, interactive competition dashboards, automated brackets, and real-time leaderboards.
 
 ![Project Status](https://img.shields.io/badge/status-active-success)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Stack](https://img.shields.io/badge/tech-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-purple)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+[![tech HTML5 | CSS3 | Vanilla JS](https://img.shields.io/badge/tech-HTML5%20%7C%20CSS3%20%7C%20Vanilla%20JS-purple)](./index.html)
 
 ---
 
