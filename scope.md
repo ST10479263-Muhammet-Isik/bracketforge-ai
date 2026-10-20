@@ -1,31 +1,38 @@
 # BracketForge AI - Project Scope
 
 ## Executive Summary
-BracketForge AI is a lightweight, agentic web application designed to eliminate administrative friction in organizing tournaments. By interviewing the organizer via an intuitive chat interface, the agent parses tournament parameters and generates a complete, interactive tournament dashboard with automated pairings and live standings.
+BracketForge AI is a lightweight, agentic web application designed to eliminate administrative friction in organizing competitive tournaments. By interviewing the organizer through an interactive chat interface, the agent parses tournament parameters and generates a complete, real-time tournament dashboard with automated pairings, rotating bye allocations, custom prize splits, and live standings.
 
-## In-Scope (Hackathon Proof-of-Concept)
-1. **Conversational Setup Agent:**
-   - Interactive questionnaire to extract:
-     - Tournament Name
-     - Tournament Format (Single Elimination or Round-Robin)
-     - Participant Roster
-     - Scoring System
-2. **Automated Tournament Engine:**
-   - Generation of dynamic match brackets and round-robin schedule fixtures.
-   - Real-time score recording and automatic tie-break calculation.
-   - Live-updating standings leaderboard table.
-3. **Export & Shareability:**
-   - Responsive mobile-friendly dashboard UI.
-   - Client-side persistence using `localStorage`.
+## In-Scope (Hackathon Deliverables)
+1. Conversational Setup Agent
+   - Step-by-step natural language questionnaire extracting tournament name, format, custom prize pool, color themes, display styles, and rosters.
+   - Interactive quick-reply chips for fast configuration.
+   - Live conversational command overrides (e.g., prize, venue, color, style, add player).
+   - Collapsible drawer interface allowing clean transition to fullscreen tournament view upon typing "done".
+
+2. Tournament Scheduling & Pairing Engine
+   - Round-Robin schedule generator powered by the Circle Method.
+   - Single-Elimination knockout bracket engine with automated winner advancement.
+   - Fair rotating pass mechanism tracking historical bye allocations so no participant receives duplicate free passes while others have none.
+   - Logic bridge activating a connected Top-8 bracket tree once eight or fewer competitors remain.
+   - Automated 3rd place playoff match creation following semi-final rounds.
+
+3. Automated Financial Engine
+   - Proportional prize pool distribution calculating 50% for 1st place, 37.5% for 2nd place, and 12.5% for 3rd place from any custom user-defined amount.
+
+4. UI & Broadcast Presentation
+   - Six distinct esports color themes (Cyber Cyan, Broadcast Gold, Pitch Emerald, Crimson Red, Royal Purple, and Clean Slate Dark).
+   - Three layout views: Connected Brackets Tree, Normal Box Cards, and Compact Match List.
+   - Real-time reactive leaderboard sorting by points, wins, and head-to-head records without full page reloads.
 
 ## Out-of-Scope (Future Iterations)
-- Complex multi-stage hybrid playoffs.
-- Automated entry-fee collection via payment gateways.
-- SMS/WhatsApp automated participant notifications.
-- Cloud database user accounts.
+- Real-time multiplayer synchronization over external WebSockets.
+- Automated SMS and WhatsApp participant notification dispatching.
+- Direct entry-fee processing through commercial payment gateway APIs.
+- Persistent cloud user accounts and remote SQL database storage.
 
 ## Hackathon Delivery Timeline
-- **Milestone 1:** Architecture design and AI specification documentation (`scope.md`, `prd.md`, `spec.md`).
-- **Milestone 2:** Tournament bracket/fixture generation algorithms.
-- **Milestone 3:** Interactive agent chat interface and real-time dashboard state synchronization.
-- **Milestone 4:** Video recording and project submission.
+- Milestone 1: AI-assisted specification and planning documentation (scope.md, prd.md, spec.md).
+- Milestone 2: Core pairing algorithms, rotating bye data structures, and proportional prize math.
+- Milestone 3: Conversational state machine and reactive UI implementation.
+- Milestone 4: Fullscreen presentation mode, documentation synchronization, and repository deployment.
