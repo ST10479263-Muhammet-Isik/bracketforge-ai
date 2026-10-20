@@ -49,3 +49,7 @@ This project was architected using AI developer workflows and structured enginee
 1. Clone or download the repository:
    ```bash
    git clone [https://github.com/ST10479263-Muhammet-Isik/bracketforge-ai.git](https://github.com/ST10479263-Muhammet-Isik/bracketforge-ai.git)
+   
+ 
+2. Open index.html in any modern web browser.
+3. Answer the agent prompts in the left sidebar to generate your tournament dashboard.
